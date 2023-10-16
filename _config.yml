@@ -8,7 +8,7 @@ subtitle: ""
 description: ""
 keywords:
 author: catding
-language: zh
+language: zh-TW
 timezone: Asia/Taipei
 
 # URL
@@ -103,28 +103,3 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ""
-
-theme_config:
-  menu:
-    home: / || fa fa-home
-    about: /about/ || fa fa-user
-    tags: /tags/ || fa fa-tags
-    #categories: /categories/ || fa fa-th
-    archives: /archives/ || fa fa-archive
-    #schedule: /schedule/ || fa fa-calendar
-    #sitemap: /sitemap.xml || fa fa-sitemap
-    #commonweal: /404/ || fa fa-heartbeat
-  google_site_verification: OhfDVyfO62-TTd-FLW-GmeMz0Ea7N7e0CEhWgmw_PVk
-  custom_file_path:
-    #head: source/_data/head.swig
-    #header: source/_data/header.swig
-    #sidebar: source/_data/sidebar.swig
-    #postMeta: source/_data/post-meta.swig
-    #postBodyEnd: source/_data/post-body-end.swig
-    #footer: source/_data/footer.swig
-    #bodyEnd: source/_data/body-end.swig
-    #variable: source/_data/variables.styl
-    #mixin: source/_data/mixins.styl
-    style: source/_data/styles.styl
-  motion:
-    async: true
