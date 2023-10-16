@@ -1,38 +1,15 @@
 ---
 title: Hello World
+date: 0000-00-00 00:00:00
+tags:
+  - 雜記
 ---
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 
-## Quick Start
+用什麼架部落格好呢？
 
-### Create a new post
+- 租主機手寫 => 花錢、懶
+- 用平臺 => 怕倒逼
+- 租主機自己架 WP => 花錢、只需要靜態頁面、~~漏洞多~~
 
-``` bash
-$ hexo new "My New Post"
-```
-
-More info: [Writing](https://hexo.io/docs/writing.html)
-
-### Run server
-
-``` bash
-$ hexo server
-```
-
-More info: [Server](https://hexo.io/docs/server.html)
-
-### Generate static files
-
-``` bash
-$ hexo generate
-```
-
-More info: [Generating](https://hexo.io/docs/generating.html)
-
-### Deploy to remote sites
-
-``` bash
-$ hexo deploy
-```
-
-More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
+那就~~隨大流~~用免錢的 Hexo + NexT + Github Page ，簡單架一架好了。\
+總之開始加減做些記錄吧，可能是技術筆記跟吐槽居多。
