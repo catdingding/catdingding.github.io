@@ -19,23 +19,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.catding.tw","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="catding 的雜記">
-<meta property="og:url" content="https://blog.catding.tw/index.html">
+    <meta name="description" content="以下大多爲親身通報過的漏洞，通報了對方還不見得願意修 弱密碼預設密碼 共通的預設帳號密碼（如某些 ipcam 的預設帳密是 admin&#x2F;admin） 用戶間有相同的預設密碼（都是 1234 ，登入以後再自己改） 以身份證字號、學號等資訊做爲預設密碼 首次登入後，未強制更改預設密碼  未進行密碼強度檢查&#x2F;錯誤的密碼設定指引 帳號與密碼相同 如果帳號都是流水號就更好了   1234">
+<meta property="og:type" content="article">
+<meta property="og:title" content="登入功能常見漏洞筆記">
+<meta property="og:url" content="https://blog.catding.tw/2023/10/17/login-vulnerabilities/index.html">
 <meta property="og:site_name" content="catding 的雜記">
+<meta property="og:description" content="以下大多爲親身通報過的漏洞，通報了對方還不見得願意修 弱密碼預設密碼 共通的預設帳號密碼（如某些 ipcam 的預設帳密是 admin&#x2F;admin） 用戶間有相同的預設密碼（都是 1234 ，登入以後再自己改） 以身份證字號、學號等資訊做爲預設密碼 首次登入後，未強制更改預設密碼  未進行密碼強度檢查&#x2F;錯誤的密碼設定指引 帳號與密碼相同 如果帳號都是流水號就更好了   1234">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://blog.catding.tw/2023/10/17/login-vulnerabilities/image_code.png">
+<meta property="article:published_time" content="2023-10-17T12:19:24.000Z">
+<meta property="article:modified_time" content="2023-10-17T12:19:24.000Z">
 <meta property="article:author" content="catding">
+<meta property="article:tag" content="資安">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.catding.tw/2023/10/17/login-vulnerabilities/image_code.png">
 
 
-<link rel="canonical" href="https://blog.catding.tw/">
+<link rel="canonical" href="https://blog.catding.tw/2023/10/17/login-vulnerabilities/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-TW","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://blog.catding.tw/2023/10/17/login-vulnerabilities/","path":"2023/10/17/login-vulnerabilities/","title":"登入功能常見漏洞筆記"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>catding 的雜記</title>
+<title>登入功能常見漏洞筆記 | catding 的雜記</title>
   
 
 
@@ -68,7 +75,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">catding 的雜記</h1>
+      <p class="site-title">catding 的雜記</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -94,7 +101,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目錄
@@ -107,6 +114,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%B1%E5%AF%86%E7%A2%BC"><span class="nav-number">1.</span> <span class="nav-text">弱密碼</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A0%90%E8%A8%AD%E5%AF%86%E7%A2%BC"><span class="nav-number">1.1.</span> <span class="nav-text">預設密碼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AA%E9%80%B2%E8%A1%8C%E5%AF%86%E7%A2%BC%E5%BC%B7%E5%BA%A6%E6%AA%A2%E6%9F%A5-%E9%8C%AF%E8%AA%A4%E7%9A%84%E5%AF%86%E7%A2%BC%E8%A8%AD%E5%AE%9A%E6%8C%87%E5%BC%95"><span class="nav-number">1.2.</span> <span class="nav-text">未進行密碼強度檢查&#x2F;錯誤的密碼設定指引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sql-injection"><span class="nav-number">2.</span> <span class="nav-text">sql injection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E8%A8%AD%E5%AF%86%E7%A2%BC%E6%BC%8F%E6%B4%9E"><span class="nav-number">3.</span> <span class="nav-text">重設密碼漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%93%E7%8C%9C%E6%B8%AC%E7%9A%84%E9%87%8D%E8%A8%AD%E5%AF%86%E7%A2%BC%E9%80%A3%E7%B5%90-%E9%A9%97%E8%AD%89%E7%A2%BC"><span class="nav-number">3.1.</span> <span class="nav-text">易猜測的重設密碼連結&#x2F;驗證碼</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A9%97%E8%AD%89%E7%A2%BC%EF%BC%88CAPTCHA-%EF%BC%89%E5%A4%B1%E6%95%88"><span class="nav-number">4.</span> <span class="nav-text">驗證碼（CAPTCHA ）失效</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%8E%E6%96%BC%E7%B0%A1%E5%96%AE%E7%9A%84%E9%A9%97%E8%AD%89%E7%A2%BC"><span class="nav-number">4.1.</span> <span class="nav-text">過於簡單的驗證碼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%8C%AF%E8%AA%A4%E7%9A%84%E6%AA%A2%E6%9F%A5%E9%A0%86%E5%BA%8F"><span class="nav-number">4.2.</span> <span class="nav-text">錯誤的檢查順序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A9%97%E8%AD%89%E7%A2%BC%E7%AD%94%E6%A1%88%E6%94%BE%E5%9C%A8%E7%B6%B2%E9%A0%81%E4%B8%AD"><span class="nav-number">4.3.</span> <span class="nav-text">驗證碼答案放在網頁中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%81%E8%A8%B1%E4%BB%A5%E7%A9%BA%E9%A9%97%E8%AD%89%E7%A2%BC%E9%80%9A%E9%81%8E%E6%AA%A2%E6%9F%A5"><span class="nav-number">4.4.</span> <span class="nav-text">允許以空驗證碼通過檢查</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E7%A2%BC%E6%B3%84%E6%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">密碼泄漏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%8E%E6%96%87-%E5%8F%AF%E9%82%84%E5%8E%9F%E7%9A%84%E5%AF%86%E7%A2%BC%E5%84%B2%E5%AD%98"><span class="nav-number">5.1.</span> <span class="nav-text">明文&#x2F;可還原的密碼儲存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%8C%AF%E8%AA%A4%E7%9A%84%E8%AB%8B%E6%B1%82%E6%96%B9%E5%BC%8F%E6%88%96-Log-%E8%A8%AD%E5%AE%9A"><span class="nav-number">5.2.</span> <span class="nav-text">錯誤的請求方式或 Log 設定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AA%E7%A2%BA%E8%AA%8D%E7%94%A8%E6%88%B6%E6%98%AF%E5%90%A6%E5%B7%B2%E7%99%BB%E5%85%A5"><span class="nav-number">6.1.</span> <span class="nav-text">未確認用戶是否已登入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AA%E7%A7%BB%E9%99%A4%E9%8C%AF%E8%AA%A4%E7%9A%84%E7%99%BB%E5%85%A5%E7%A8%8B%E5%BC%8F"><span class="nav-number">6.2.</span> <span class="nav-text">未移除錯誤的登入程式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AA%E6%AA%A2%E6%9F%A5%E5%AF%86%E7%A2%BC"><span class="nav-number">6.3.</span> <span class="nav-text">未檢查密碼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%8C%AF%E8%AA%A4%E7%9A%84-IP-%E6%AA%A2%E6%9F%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">6.4.</span> <span class="nav-text">錯誤的 IP 檢查方式</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -141,16 +149,17 @@
 
     </div>
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://blog.catding.tw/2023/10/17/login-vulnerabilities/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -164,13 +173,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | catding 的雜記">
+      <meta itemprop="name" content="登入功能常見漏洞筆記 | catding 的雜記">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/17/login-vulnerabilities/" class="post-title-link" itemprop="url">登入功能常見漏洞筆記</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          登入功能常見漏洞筆記
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -192,8 +201,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-          <p>以下大多爲親身通報過的漏洞，<del>通報了對方還不見得願意修</del></p>
+    <div class="post-body" itemprop="articleBody"><p>以下大多爲親身通報過的漏洞，<del>通報了對方還不見得願意修</del></p>
 <h2 id="弱密碼"><a href="#弱密碼" class="headerlink" title="弱密碼"></a>弱密碼</h2><h3 id="預設密碼"><a href="#預設密碼" class="headerlink" title="預設密碼"></a>預設密碼</h3><ul>
 <li>共通的預設帳號密碼（如某些 ipcam 的預設帳密是 admin&#x2F;admin）</li>
 <li>用戶間有相同的預設密碼（都是 1234 ，登入以後再自己改）</li>
@@ -250,7 +258,6 @@
 <h3 id="未檢查密碼"><a href="#未檢查密碼" class="headerlink" title="未檢查密碼"></a>未檢查密碼</h3><p>這個很謎，但真的遇過……<br>帳號打對，密碼隨便輸入就行</p>
 <h3 id="錯誤的-IP-檢查方式"><a href="#錯誤的-IP-檢查方式" class="headerlink" title="錯誤的 IP 檢查方式"></a>錯誤的 IP 檢查方式</h3><p>例如相信用戶傳過來的 X-Forwarded-For 或 Client-IP 等 Header</p>
 
-      
     </div>
 
     
@@ -258,188 +265,25 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-tags">
+              <a href="/tags/%E8%B3%87%E5%AE%89/" rel="tag"># 資安</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/10/16/hexo-next/" rel="prev" title="原來有三個 Hexo NexT repo">
+                  <i class="fa fa-angle-left"></i> 原來有三個 Hexo NexT repo
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.catding.tw/2023/10/16/hexo-next/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="catding">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="catding 的雜記">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | catding 的雜記">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/16/hexo-next/" class="post-title-link" itemprop="url">原來有三個 Hexo NexT repo</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2023-10-16 23:20:19" itemprop="dateCreated datePublished" datetime="2023-10-16T23:20:19+08:00">2023-10-16</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>第一篇就貢獻給 Hexo 吧</p>
-<h2 id="背景廢話"><a href="#背景廢話" class="headerlink" title="背景廢話"></a>背景<del>廢話</del></h2><p>今天在找 Hexo 主題的時候，看了一下<a target="_blank" rel="noopener" href="https://github.com/topics/hexo-theme">有 hexo-theme tag 的 github repo</a>，排第一的是 <a target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">iissnan&#x2F;hexo-theme-next</a>，但仔細一看，最新的 release 已經是 2018 年了。</p>
-<p>不過好在 README 有寫，”The community-maintained version is here: <a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next">NexT v6 and v7</a> 🚩”，雖然最後的 v7.8.0 release 是 2020，但多少比較新，於是就開始進行安裝與設定。</p>
-<p>沒想到裝完後，在看其他關於 NexT 的文章時，其中提及了 v8.x 版。<br>不是只到 v7.8.0 嗎？？？於是又找了下，原來另外又有一個 <a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-theme-next">repo</a> 還在維護，已經更新到 v8.18.2 。</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>簡單來說，兩次換 repo 都是因爲原本的維護者不再活躍，但也沒有移交權限，導致活躍的成員另起爐竈。</p>
-<p>而許多過往文章都指向舊版 repo ，加上 star 最多的最舊、前一版 README 沒有指向最新版，所以就跑去裝舊版了……</p>
-<table>
-<thead>
-<tr>
-<th>version</th>
-<th>star</th>
-<th>repo</th>
-<th>搬家說明 issue</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>~ v5.1.4</td>
-<td>15.9k</td>
-<td><a target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">https://github.com/iissnan/hexo-theme-next</a></td>
-<td></td>
-</tr>
-<tr>
-<td>v6.0.0 ~ v7.8.0</td>
-<td>8k</td>
-<td><a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next">https://github.com/theme-next/hexo-theme-next</a></td>
-<td><a target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next/issues/2061#issuecomment-354696520">link</a></td>
-</tr>
-<tr>
-<td>v8.0.0 ~</td>
-<td>2.1k</td>
-<td><a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-theme-next">https://github.com/next-theme/hexo-theme-next</a></td>
-<td><a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-theme-next/issues/4#issuecomment-626205848">link</a></td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.catding.tw/2023/10/16/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="catding">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="catding 的雜記">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | catding 的雜記">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/16/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2023-10-16 20:00:00" itemprop="dateCreated datePublished" datetime="2023-10-16T20:00:00+08:00">2023-10-16</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>用什麼架部落格好呢？</p>
-<ul>
-<li>租主機手寫 &#x3D;&gt; 花錢、懶</li>
-<li>用平臺 &#x3D;&gt; 怕倒閉</li>
-<li>租主機自己架 WP &#x3D;&gt; 花錢、只需要靜態頁面、<del>漏洞多</del></li>
-</ul>
-<p>那就<del>隨大流</del>用免錢的 Hexo + NexT + Github Page ，簡單架一架好了。<br>總之開始加減做些記錄吧，可能是技術筆記跟吐槽居多。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
