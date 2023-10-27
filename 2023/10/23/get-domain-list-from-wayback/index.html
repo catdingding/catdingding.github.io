@@ -112,7 +112,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E6%95%B8%E8%AA%AA%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">參數說明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%93%E5%8F%96%E6%95%B8%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">抓取數量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9D%91"><span class="nav-number">3.</span> <span class="nav-text">坑</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E6%95%B8%E8%AA%AA%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">參數說明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%93%E5%8F%96%E6%95%B8%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">抓取數量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9D%91"><span class="nav-number">3.</span> <span class="nav-text">坑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#url-%E5%8F%83%E6%95%B8"><span class="nav-number">3.1.</span> <span class="nav-text">url 參數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#limit-%E5%8F%83%E6%95%B8"><span class="nav-number">3.2.</span> <span class="nav-text">limit 參數</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -212,9 +212,10 @@
 <li>limit：輸出的筆數上限，硬性上限爲 150000，可透過分頁或是 resumeKey 取得更多結果</li>
 <li>filter：可以欄位值過濾資料，加上!是排除，支援 regex，注意做 url encoding</li>
 </ul>
-<h2 id="抓取數量"><a href="#抓取數量" class="headerlink" title="抓取數量"></a>抓取數量</h2><p>2023-10-24 共抓到了 11 萬筆左右（未排除已停止運作的網站或已過期 domain）</p>
-<h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><p>url 參數用 *.tw 時，無法取得 .com.tw, .edu.tw 等二級域名底下的 domain，需用 *.com.tw, *.edu.tw 才能取得。</p>
-<p>目前使用 <a target="_blank" rel="noopener" href="https://www.twnic.tw/dnservice_announce_restore.php">TWNIC 保留字</a> 中的清單來一個一個跑。</p>
+<h2 id="抓取數量"><a href="#抓取數量" class="headerlink" title="抓取數量"></a>抓取數量</h2><p>2023-10-27 共抓到了 912603 筆（未排除已停止運作的網站或已過期 domain）</p>
+<h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><h3 id="url-參數"><a href="#url-參數" class="headerlink" title="url 參數"></a>url 參數</h3><p>url 參數用 *.tw 時，無法取得 .com.tw, .edu.tw 等二級域名底下的 domain，需用 *.com.tw, *.edu.tw 才能取得。</p>
+<p>目前使用 <a target="_blank" rel="noopener" href="https://www.twnic.tw/dnservice_announce_announce_2.php">TWNIC 屬性型網域名稱</a> 中的清單來一個一個跑。</p>
+<h3 id="limit-參數"><a href="#limit-參數" class="headerlink" title="limit 參數"></a>limit 參數</h3><p>如果 limit&#x3D;10000 + 使用 resumeKey，得到的結果會明顯少於 limit&#x3D;1000 + 使用 resumeKey<br>確定後者不是因爲資料重複所以比較多，總之沒搞懂原理</p>
 
     </div>
 
