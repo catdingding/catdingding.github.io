@@ -28,10 +28,17 @@ https://web.archive.org/cdx/search/cdx?url=*.tw/&output=txt&fl=original&collapse
 
 ## 抓取數量
 
-2023-10-24 共抓到了 11 萬筆左右（未排除已停止運作的網站或已過期 domain）
+2023-10-27 共抓到了 912603 筆（未排除已停止運作的網站或已過期 domain）
 
 ## 坑
 
+### url 參數
+
 url 參數用 \*.tw 時，無法取得 .com.tw, .edu.tw 等二級域名底下的 domain，需用 \*.com.tw, \*.edu.tw 才能取得。
 
-目前使用 [TWNIC 保留字](https://www.twnic.tw/dnservice_announce_restore.php) 中的清單來一個一個跑。
+目前使用 [TWNIC 屬性型網域名稱](https://www.twnic.tw/dnservice_announce_announce_2.php) 中的清單來一個一個跑。
+
+### limit 參數
+
+如果 limit=10000 + 使用 resumeKey，得到的結果會明顯少於 limit=1000 + 使用 resumeKey\
+確定後者不是因爲資料重複所以比較多，總之沒搞懂原理
