@@ -115,7 +115,7 @@ https://www.facebook.com/jiudi.me/
 
 因上述所列的多項共同之處，應可判斷這個網站爲九弟所建（除非是相當縝密的身份冒用）
 
-### 番外篇——爲什麼多個正常網站，都包含了 xinpu-ahm.com.tw 的連結？
+## 番外篇——爲什麼多個正常網站，都包含了 xinpu-ahm.com.tw 的連結？
 
 [新竹縣新埔宗祠博物館](https://www.facebook.com/xinpushrinema)
 {% asset_img xinpushrinema.png %}
@@ -129,3 +129,11 @@ https://www.facebook.com/jiudi.me/
 {% asset_img 2022-xinpu.png %}
 
 至於爲什麼此域名會被人接手，進而成爲 AI 內容農場，就留待其他人研究了。
+
+## 案外案：九弟公司的業務還包含幫忙拿……居住證？
+
+CTMaxs 亦爲九弟創辦的公司
+
+{% asset_img CTMaxs.png %}
+
+https://www.facebook.com/LumaCTMaxs
