@@ -104,10 +104,13 @@ https://www.facebook.com/jiudi.me/
 可知這是「翟先生」的手機
 {% asset_img 104.jpg %}
 
+在 LINE 搜尋，可得知帳號名稱爲「九弟」
+{% asset_img line.jpg %}
+
 ## 總結
 
 - xinpu-ahm.com.tw 與 semi.com.tw 是同一 IP，且都是內容農場
-- 註冊 xinpu-ahm.com.tw 的電話=翟先生的手機
+- 註冊 xinpu-ahm.com.tw 的電話=翟先生的手機=九弟的 LINE 帳號
 - semi.com.tw 的其中一篇作者之頭像=Mr. Chạc Cẩu Tày 的照片，且提及九弟
 - 翟九弟粉專的 email=Chạc Cẩu Tày
 - 該 IP 有多個越南網站+翟九弟來自越南
