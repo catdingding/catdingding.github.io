@@ -1,5 +1,5 @@
 ---
-title: collect-domains
+title: 蒐集 domain
 date: 2023-11-19 20:40:45
 tags:
 ---
