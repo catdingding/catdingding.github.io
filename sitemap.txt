@@ -1,3 +1,4 @@
+https://blog.catding.tw/2023/12/11/7-floor/
 https://blog.catding.tw/2023/11/19/collect-domains/
 https://blog.catding.tw/2023/11/08/ai-trash-website/
 https://blog.catding.tw/2023/10/23/get-domain-list-from-wayback/
@@ -7,6 +8,7 @@ https://blog.catding.tw/2023/10/16/hello-world/
 https://blog.catding.tw/about/index.html
 https://blog.catding.tw/tags/index.html
 https://blog.catding.tw/
+https://blog.catding.tw/tags/dream/
 https://blog.catding.tw/tags/domain-%E7%88%AC%E8%9F%B2/
 https://blog.catding.tw/tags/%E9%9B%9C%E8%A8%98/
 https://blog.catding.tw/tags/Hexo/
