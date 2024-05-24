@@ -1,3 +1,4 @@
+https://blog.catding.tw/2024/05/24/obey-the-majority/
 https://blog.catding.tw/2023/12/30/suicide-data/
 https://blog.catding.tw/2023/12/11/7-floor/
 https://blog.catding.tw/2023/11/19/collect-domains/
@@ -11,9 +12,9 @@ https://blog.catding.tw/tags/index.html
 https://blog.catding.tw/
 https://blog.catding.tw/tags/dream/
 https://blog.catding.tw/tags/domain-%E7%88%AC%E8%9F%B2/
-https://blog.catding.tw/tags/%E9%9B%9C%E8%A8%98/
 https://blog.catding.tw/tags/Hexo/
 https://blog.catding.tw/tags/front-end/
+https://blog.catding.tw/tags/%E9%9B%9C%E8%A8%98/
 https://blog.catding.tw/tags/%E8%B3%87%E5%AE%89/
 https://blog.catding.tw/tags/%E9%96%8B%E9%96%8B%E5%BF%83%E5%BF%83%E7%8E%A9%E6%95%B8%E6%93%9A/
 https://blog.catding.tw/tags/%E6%95%B8%E6%93%9A/
